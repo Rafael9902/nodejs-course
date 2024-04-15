@@ -1,18 +1,14 @@
-import { readFile, writeFile } from "node:fs/promises";
-import { createServer } from "node:http";
+import { readFile } from "node:fs/promises";
 
-const text = await readFile("input.txt", "utf-8");
+// Event lopp test
+setTimeout(() => console.log("Timer 1 finished"), 0);
 
-const output = `Content: ${text} \nCreated on: ${Date.now()}`;
+setImmediate(() => console.log("Inmediate 1 finished"));
 
-await writeFile("output.txt", output);
+const fileContent = await readFile("input.txt", "utf-8");
 
-console.log("file writing");
+console.log(fileContent, "File Content");
 
-// SERVER
+console.log("top-level-code");
 
-const server = createServer((req, res) => {
-  res.end("Hello World");
-});
-
-server.listen(8000, "127.0.0.1", () => console.log("Listening at port 8000"));
+process.nextTick(() => console.log("hello"));
