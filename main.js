@@ -1,14 +1,14 @@
-import { readFile } from "node:fs/promises";
+// events
+import { EventEmitter } from "events";
 
-// Event lopp test
-setTimeout(() => console.log("Timer 1 finished"), 0);
+class Sales extends EventEmitter {
+  constructor() {
+    super();
+  }
+}
 
-setImmediate(() => console.log("Inmediate 1 finished"));
+const sales = new Sales();
 
-const fileContent = await readFile("input.txt", "utf-8");
+sales.on("new emit", (name) => console.log(`emited ${name}`));
 
-console.log(fileContent, "File Content");
-
-console.log("top-level-code");
-
-process.nextTick(() => console.log("hello"));
+sales.emit("new emit", "rafael");
