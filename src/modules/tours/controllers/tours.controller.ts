@@ -1,7 +1,13 @@
-import { Router } from 'express';
-import { getTours } from '../services/tours.service.ts';
+import { Request, Response } from 'express';
 
-export const tours = Router();
-tours.use('/tours', tours);
+export const getTours = (req: Request, res: Response) => {
+  res.send('tours');
+};
 
-tours.get('/', getTours);
+export const getTour = (req: Request, res: Response) => {
+  const id: string = req.params.id;
+
+  console.log(id, 'hola');
+
+  res.send(id);
+};

@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
 import { environment } from './environment/environment.ts';
-import { tours } from './modules/tours/controllers/tours.controller.ts';
 import { httpLogger } from './core/middlewares/http-logger.middleware.ts';
-import { users } from './modules/users/controllers/users.controller.ts';
+import { tours } from './modules/tours/routes/tours.routes.ts';
+import { users } from './modules/users/routes/users.routes.ts';
 
 const app: Express = express();
 

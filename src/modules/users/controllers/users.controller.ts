@@ -1,7 +1,5 @@
-import { Router } from 'express';
-import { getUsers } from '../services/users.service.ts';
+import { Request, Response } from 'express';
 
-export const users = Router();
-users.use('/users', users);
-
-users.get('/', getUsers);
+export const getUsers = (req: Request, res: Response) => {
+  res.send('users');
+};
